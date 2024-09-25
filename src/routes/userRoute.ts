@@ -1,6 +1,6 @@
 
 import  express  from 'express';
-import { login, register } from '../Services/userServices';
+import { login, register } from '../Services/userService';
 
 
 
