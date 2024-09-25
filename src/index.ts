@@ -1,30 +1,33 @@
-import express from "express"
-import mongoose from "mongoose"
-import userRoute from "./routes/userRoute"
-import { seedInitialProducts } from "./Services/ProductService"
-import productRoute from "./routes/productRoute"
+import dotenv from "dotenv";
 
-const app = express()
-const port = 3001
+import express from "express";
+import mongoose from "mongoose";
+import userRoute from "./routes/userRoute";
+import productRoute from "./routes/productRoute";
+import cartRoute from "./routes/cartRoute";
+import { seedInitialProducts } from ".//Services/ProductService";
+import cors from "cors";
 
+dotenv.config();
 
-app.use(express.json())
-mongoose.connect("mongodb://localhost:27017/E-COMMERCE-two")
-.then(() => console.log("connected"))
-.catch((err)=>console.log("failed to connect",err))
+const app = express();
+const port = 3001;
 
+app.use(express.json());
+app.use(cors());
 
-//seed the products to database
-seedInitialProducts()
-app.use('/user',userRoute)
-app.use('/product',productRoute)
+mongoose
+  .connect(process.env.DATABASE_URL || "")
+  .then(() => console.log("Mongo connected!"))
+  .catch((err) => console.log("Failed to connect!", err));
 
-app.listen(port,()=>{
-    console.log(`server is running at: http://localhost:${port}`)
-})
+// Seed the products to database
+seedInitialProducts();
 
+app.use("/user", userRoute);
+app.use("/product", productRoute);
+app.use("/cart", cartRoute);
 
-
-
-
-
+app.listen(port, () => {
+  console.log(`Server is running at: http://localhost:${port}`);
+});
