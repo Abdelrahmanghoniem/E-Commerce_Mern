@@ -4,8 +4,8 @@ import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useRef, useState } from "react";
-import { BASE_URL } from "../constants/BaseUrl.ts";
-import { useAuth } from "../context/auth/AuthContext.tsx";
+import { BASE_URL } from "../constants/baseUrl.ts";
+import { useAuth } from "../context/Auth/AuthContext.tsx";
 import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
@@ -118,7 +118,7 @@ const RegisterPage = () => {
         </Box>
 
       </Box>
-      
+
     </Container>
   );
 };

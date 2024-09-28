@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid2';
 import ProductCard from '../components/ProductCard'; // Adjust the path based on your project structure
 import { useEffect, useState } from "react";
 import { Product } from "../types/Product";
-import { BASE_URL } from "../constants/BaseUrl";
+import { BASE_URL } from "../constants/baseUrl";
 import { Box } from "@mui/material";
 
 const HomePage = () => {
