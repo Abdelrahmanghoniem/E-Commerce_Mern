@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid2';
 import ProductCard from '../components/ProductCard'; // Adjust the path based on your project structure
 import { useEffect, useState } from "react";
 import { Product } from "../types/Product";
-import { Base_URL } from "../constants/BaseUrl";
+import { BASE_URL } from "../constants/BaseUrl";
 import { Box } from "@mui/material";
 
 const HomePage = () => {
@@ -17,7 +17,7 @@ const HomePage = () => {
         const fetchData=async()=>{
         try{
         
-            const response=await fetch(`${Base_URL}/product`)
+            const response=await fetch(`${BASE_URL}/product`)
             const data=await response.json()
             setProducts(data)
         } catch {
