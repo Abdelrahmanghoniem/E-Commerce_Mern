@@ -1,15 +1,13 @@
 import { FC, PropsWithChildren, useState } from "react";
-import  {AuthContext}  from "./AuthContext";
+import { AuthContext } from "./AuthContext";
 
 const USERNAME_KEY = "username";
 const TOKEN_KEY = "token";
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-    
   const [username, setUsername] = useState<string | null>(
     localStorage.getItem(USERNAME_KEY)
   );
-  
   const [token, setToken] = useState<string | null>(
     localStorage.getItem(TOKEN_KEY)
   );

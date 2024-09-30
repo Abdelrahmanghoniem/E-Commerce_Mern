@@ -1,5 +1,7 @@
-import { createContext, useContext } from "react";
+// authContext.tsx
+import { createContext } from "react";
 
+// Define the interface (structure) for the context
 interface AuthContextType {
   username: string | null;
   token: string | null;
@@ -8,6 +10,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
+// Create the AuthContext with a default value
 export const AuthContext = createContext<AuthContextType>({
   username: null,
   token: null,
@@ -15,5 +18,3 @@ export const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   logout: () => {},
 });
-
-export const useAuth = () => useContext(AuthContext);

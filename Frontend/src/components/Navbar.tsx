@@ -11,8 +11,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
-import { useAuth } from "../context/Auth/AuthContext";
-import { Badge, Button, Grid } from "@mui/material";
+import { useAuth } from "../context/Auth/useAuth";
+import { Badge, Button, Grid2 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/Cart/CartContext";
 
@@ -84,7 +84,7 @@ function Navbar() {
                     fontWeight: 700,
                   }}
                 >
-                  Tech Hub
+                  Sprint Minds
                 </Typography>
               </Box>
             </Button>
@@ -103,24 +103,25 @@ function Navbar() {
               {isAuthenticated ? (
                 <>
                   <Tooltip title="Open settings">
-                    <Grid
+                    <Grid2
                       container
                       alignItems="center"
                       justifyContent="center"
                       gap={2}
                     >
-                      <Grid item>
+                      <Grid2 size={{ xs: 12}}>
                         <Typography>{username}</Typography>
-                      </Grid>
-                      <Grid item>
+                      </Grid2>
+                      <Grid2 size={{ xs: 12}}>
                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                           <Avatar
                             alt={username || ""}
                             src="/static/images/avatar/2.jpg"
                           />
                         </IconButton>
-                      </Grid>
-                    </Grid>
+                      </Grid2>                    
+
+                    </Grid2>
                   </Tooltip>
                   <Menu
                     sx={{ mt: "45px" }}
