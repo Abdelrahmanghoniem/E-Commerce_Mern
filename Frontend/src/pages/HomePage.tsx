@@ -1,50 +1,43 @@
 import Container from "@mui/material/Container";
-import Grid from '@mui/material/Grid2';
-
-
-import ProductCard from '../components/ProductCard'; // Adjust the path based on your project structure
+import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
 import { Product } from "../types/Product";
 import { BASE_URL } from "../constants/baseUrl";
-import { Box } from "@mui/material";
+import { Box, Grid2 } from "@mui/material";
 
 const HomePage = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [error, setError] = useState(false);
 
-    const [products,setProducts]=useState<Product[]>([])
-    const [error,setError]=useState(false)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/product`);
+        const data = await response.json();
+        setProducts(data);
+      } catch {
+        setError(true);
+      }
+    };
 
-    useEffect(()=>{
-        const fetchData=async()=>{
-        try{
-        
-            const response=await fetch(`${BASE_URL}/product`)
-            const data=await response.json()
-            setProducts(data)
-        } catch {
-            setError(true);
-        }
-    }
-        fetchData();
-    },[])
+    fetchData();
+  }, []);
 
-    if(error){
-        return <Box>sometihing went wrong  please try again</Box>
-    }
+  if(error) {
+    return <Box>Something went wrong, please try again!</Box>
+  }
 
   return (
     <Container sx={{ mt: 2 }}>
-      <Grid container spacing={2} component="div">
-        {products.map(({_id,title,image,price})=>(
-            <Grid  size={{ xs: 12, sm: 6,md:4 }} spacing={2}  component="div">
-                <ProductCard id={_id} title={title} image={image} price={price} />
-              </Grid>
-              
+      <Grid2 container spacing={2}>
+        {products.map((p) => (
+          <Grid2  size={{md:4}} >
+            <ProductCard {...p} />
+          </Grid2>
         ))}
-     
-      </Grid>
+      </Grid2>
     </Container>
   );
 };
 
 export default HomePage;
-

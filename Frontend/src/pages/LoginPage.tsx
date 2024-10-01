@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useRef, useState } from "react";
 import { BASE_URL } from "../constants/baseUrl";
-import { useAuth } from "../context/Auth/useAuth";
+import { useAuth } from "../context/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
