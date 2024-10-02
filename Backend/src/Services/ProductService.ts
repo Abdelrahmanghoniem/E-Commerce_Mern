@@ -5,7 +5,8 @@ export const getAllProducts=async ()=>{
 }
 
 export const seedInitialProducts=async()=>{
-    const products=[
+    try {
+        const products=[
     {
         title:"MSI GF63 Thin labtop",
         image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVBCDJh5jSdZN10pDv4OCG4lbyozMhmcy2fA&s",
@@ -32,4 +33,7 @@ export const seedInitialProducts=async()=>{
     if (existingProducts.length===0){
         await ProductModel.insertMany(products)
     }
+}catch (err){
+    console.error("cannot see database", err);
+}
 };
