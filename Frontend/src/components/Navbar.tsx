@@ -89,7 +89,7 @@ function Navbar() {
                     fontWeight: 700,
                   }}
                 >
-                  Tech Hub
+                  Sprint Minds
                 </Typography>
               </Box>
             </Button>
