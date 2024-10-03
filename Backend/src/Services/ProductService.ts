@@ -1,7 +1,7 @@
-import ProductModel from "../models/productModel";
+import productModel from "../models/productModel";
 
 export const getAllProducts=async ()=>{
-    return await ProductModel.find();
+    return await productModel.find();
 }
 
 export const seedInitialProducts=async()=>{
@@ -30,10 +30,10 @@ export const seedInitialProducts=async()=>{
 
     const existingProducts=await getAllProducts();
 
-    if (existingProducts.length===0){
-        await ProductModel.insertMany(products)
+    if (existingProducts.length === 0) {
+        await productModel.insertMany(products);
+      }
+    } catch (err) {
+      console.error("cannot see database", err);
     }
-}catch (err){
-    console.error("cannot see database", err);
-}
 };
